@@ -1,0 +1,265 @@
+1) //Ввести два цілих числа number1 та number2 та перевірити чи вони можуть бути днем та місяцем. Вивести результат в консоль.
+using System;
+
+namespace Project_1_linear_operators
+{   
+        internal class Program
+        {
+            private static void Main(string[] args
+        {
+            Console.WriteLine("Введіть перше число:");
+                int day = int.Parse(Console.ReadLine());
+                Console.WriteLine("Введіть друге число:");
+                int month = int.Parse(Console.ReadLine());
+            // Вивід результату
+            if (day >= 1 && day <= 31 && month >= 1 && month <= 12)
+            {
+                Console.WriteLine("Введені числа можуть бути днем та місяцем.");
+            }
+            else
+            {
+                Console.WriteLine("Введені числа не можуть бути днем та місяцем.");
+            }
+            }
+        }
+}
+
+2) Ввести дійсне  число number  та отримати два перших 2 знаки після коми та результат вивести у вигляді суми цих чисел. Наприклад: 3.456 -> 4+5=9
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Liner_operators_Project1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введіть дійсне число:");
+            double number = Convert.ToDouble(Console.ReadLine());
+
+            // Отримання двох перших знаків після коми
+            string twoDigitsAfterComma = number.ToString("0.00").Substring(2);
+            int firstDigit = int.Parse(twoDigitsAfterComma[0]);
+            int secondDigit = int.Parse(twoDigitsAfterComma[1]);
+
+            int sum = firstDigit + secondDigit;
+
+            Console.WriteLine($"Сума двох перших знаків після коми: {sum}");
+        }
+    }
+}
+
+3) Ввести ціле число h, що відображає час дня у годинах. Залежно від часу доби, вивести привітання ("Доброго ранку!", "Добрий день!", "Добрий вечір!“ або "Доброї ночі!")
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace GreetingByTimeOfDay
+    {
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                Console.WriteLine("Введіть поточний час у годинах (від 0 до 24):");
+                int hours = Convert.ToInt32(Console.ReadLine());
+
+                string greeting = GetGreetingByTimeOfDay(hours);
+
+                Console.WriteLine(greeting);
+            }
+
+            static string GetGreetingByTimeOfDay(int hours)
+            {
+                // Створення змінної для зберігання привітання
+                string greeting;
+
+                // Перевірка часу
+                if (hours < 6)
+                {
+                    greeting = "Доброї ночі!";
+                }
+                else if (hours < 12)
+                {
+                    greeting = "Доброго ранку!";
+                }
+                else if (hours < 18)
+                {
+                    greeting = "Доброго дня!";
+                }
+                else
+                {
+                    greeting = "Доброго вечора!";
+                }
+
+                return greeting;
+            }
+        }
+    }
+
+4) Зчитати 3 змінних типу integer та вивести max та min з них.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FindMaxMin
+    {
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                Console.WriteLine("Введіть перше ціле число:");
+                int number1 = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Введіть друге ціле число:");
+                int number2 = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Введіть третє ціле число:");
+                int number3 = Convert.ToInt32(Console.ReadLine());
+
+                int max = Math.Max(number1, Math.Max(number2, number3));
+                int min = Math.Min(number1, Math.Min(number2, number3));
+
+                Console.WriteLine($"Максимальне число: {max}");
+                Console.WriteLine($"Мінімальне число: {min}");
+            }
+        }
+    }
+5)Створіть програму, яка обчислює площу прямокутника з використанням дійсних чисел (тип даних double). Користувач має ввести довжину і ширину прямокутника.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace RectangleAreaCalculator
+    {
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                Console.WriteLine("Введіть довжину прямокутника:");
+                double length = Convert.ToDouble(Console.ReadLine());
+
+                Console.WriteLine("Введіть ширину прямокутника:");
+                double width = Convert.ToDouble(Console.ReadLine());
+
+                double area = CalculateRectangleArea(length, width);
+
+                Console.WriteLine($"Площа прямокутника: {area}");
+            }
+
+            static double CalculateRectangleArea(double length, double width)
+            {
+                return length * width;
+            }
+        }
+    }
+
+6) Реалізуйте програму, яка перевіряє, чи введене число є парним чи непарним. Виведіть відповідне повідомлення.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace OddEvenChecker
+    {
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                Console.WriteLine("Введіть ціле число:");
+                int number = Convert.ToInt32(Console.ReadLine());
+
+                if (IsEven(number))
+                {
+                    Console.WriteLine("Число парне.");
+                }
+                else
+                {
+                    Console.WriteLine("Число непарне.");
+                }
+            }
+
+            static bool IsEven(int number)
+            {
+                return number % 2 == 0;
+            }
+        }
+    }
+
+7) Створіть програму, яка приймає температуру в градусах Цельсія та перетворює її в градуси Фаренгейта за допомогою формули C = (F - 32) * 5/9, де C - градуси Цельсія, F - градуси Фаренгейта.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace TemperatureConverter
+    {
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                Console.WriteLine("Введіть температуру в градусах Цельсія:");
+                double celsius = Convert.ToDouble(Console.ReadLine());
+
+                double fahrenheit = CelsiusToFahrenheit(celsius);
+
+                Console.WriteLine($"Температура в градусах Фаренгейта: {fahrenheit} °F");
+            }
+
+            static double CelsiusToFahrenheit(double celsius)
+            {
+                return (celsius * 9 / 5) + 32;
+            }
+        }
+    }
+
+8) Напишіть програму, яка обчислює суму перших n натуральних чисел, де n вводить користувач.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+namespace SumOfNaturalNumbers
+    {
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                Console.WriteLine("Введіть число n:");
+                int n = Convert.ToInt32(Console.ReadLine());
+
+                int sum = CalculateSumOfNaturalNumbers(n);
+
+                Console.WriteLine($"Сума перших {n} натуральних чисел: {sum}");
+            }
+
+            static int CalculateSumOfNaturalNumbers(int n)
+            {
+                int sum = 0;
+
+                for (int i = 1; i <= n; i++)
+                {
+                    sum += i;
+                }
+
+                return sum;
+            }
+        }
+    }

@@ -1,0 +1,229 @@
+1. Напишіть програму, яка виведе всі парні числа від 1 до 20 включно:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            for (int i = 1; i <= 20; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    Console.WriteLine(i);
+                }
+            }
+        }
+    }
+}
+2. Створіть програму, яка виведе суму всіх чисел від 1 до 100.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int k = 1;
+            int s = 0;
+            do
+            {
+                s += k;
+                ++k;
+            }
+            while (k <= 100);
+            Console.WriteLine("Sum = {0}", s);
+        }
+    }
+}
+3. Реалізуйте програму, яка виведе таблицю множення для заданого
+користувачем числа.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введіть число : ");
+            if (int.TryParse(Console.ReadLine(), out int number))
+            {
+                Console.WriteLine($"Таблиця множення для числа {number}:");
+                PrintMultiplicationTable(number);
+            }
+            else
+            {
+                Console.WriteLine("введіть число а інший символ.");
+            }
+
+            Console.ReadLine(); // Затримка консолі перед закриттям
+        }
+
+        static void PrintMultiplicationTable(int number)
+        {
+            for (int i = 1; i <= 10; i++)
+            {
+                int result = number * i;
+                Console.WriteLine($"{number} * {i} = {result}");
+
+            }
+        }
+    }
+}
+4.Створіть програму, яка виведе факторіал числа, яке користувач
+введе з клавіатури.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введіть число : ");
+            if (int.TryParse(Console.ReadLine(), out int inputNumber) && inputNumber >= 0)
+            {
+                long factorial = CalculateFactorial(inputNumber);
+                Console.WriteLine($"Факторіал числа {inputNumber} дорівнює {factorial}");
+            }
+            else
+            {
+                Console.WriteLine("Число невірне. ");
+            }
+
+            Console.ReadLine(); 
+        }
+
+        static long CalculateFactorial(int n)
+        {
+            if (n == 0 || n == 1)
+            {
+                return 1;
+            }
+            else
+            {
+                long result = 1;
+                for (int i = 2; i <= n; i++)
+                {
+                    result *= i;
+                }
+                return result;
+            }
+        }
+    }
+}
+5.Напишіть програму, яка знайде суму всіх простих чисел в межах від
+1 до 50.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int k = 1;
+            int s = 0;
+            do
+            {
+                s += k;
+                ++k;
+            }
+            while (k <= 50);
+            Console.WriteLine("Sum = {0}", s);
+        }
+    }
+}
+6.Створіть програму, яка переведе число в двійкову систему
+числення. 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int number = 10;
+            string binaryNumber = "";
+
+            while (number != 0)
+            {
+                binaryNumber += (number % 2).ToString();
+                number /= 2;
+            }
+
+            Console.WriteLine("Двійкове число: " + binaryNumber);
+        }
+    }
+}
+7.Напишіть програму, яка знаходитиме суму чисел Фібоначчі, яка
+менша заданого числа, та підрахує кількість елементів.
+using System;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        int n = int.Parse(Console.ReadLine());
+        int a = 0;
+        int b = 1;
+        int sum = 0;
+        int count = 0;
+
+        while (a + b <= n)
+        {
+            sum += a + b;
+            count++;
+            a = b;
+            b = a + b;
+        }
+
+        Console.WriteLine("Сума: " + sum);
+        Console.WriteLine("Кількість елементів: " + count);
+    }
+}
+
+8. Розробіть програму, яка знайде найбільший спільний дільник (НСД)
+для двох чисел, які введе користувач.
+Console.WriteLine("Введіть два числа:");
+        int a = int.Parse(Console.ReadLine());
+        int b = int.Parse(Console.ReadLine());
+
+        int gcd = 1;
+        for (int i = 2; i <= Math.Min(a, b); i++)
+        {
+            if (a % i == 0 && b % i == 0)
+            {
+                gcd = i;
+            }
+        }
+
+        Console.WriteLine("НСД: " + gcd);

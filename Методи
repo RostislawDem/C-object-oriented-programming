@@ -1,0 +1,180 @@
+1.Створіть програму, яка обчислює середнє арифметичне всіх елементів у
+заданому масиві цілих чисел.
+double Calculate(double a, double b, char operation) {
+  switch (operation) {
+    case '+':
+      return a + b;
+    case '-':
+      return a - b;
+    case '*':
+      return a * b;
+    case '/':
+      return a / b;
+    default:
+      throw new ArgumentException("Невідома операція: " + operation);
+  }
+}
+
+2. Перевірка простого числа: Розробіть функцію, яка перевіряє, чи є задане число простим і повертає булеве значення.
+public static bool IsPrime(int number)
+{
+    if (number <= 1)
+    {
+        return false;
+    }
+
+    for (int i = 2; i * i <= number; i++)
+    {
+        if (number % i == 0)
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+3.public static decimal ConvertCurrency(decimal amount, string fromCurrency, string toCurrency)
+{
+    // Отримуємо поточні обмінні курси
+    var exchangeRates = GetExchangeRates();
+
+    // Знаходимо обмінний курс з валюти "fromCurrency" у валюту "toCurrency"
+    var exchangeRate = exchangeRates[fromCurrency][toCurrency];
+
+    // Переводимо суму
+    return amount * exchangeRate;
+}
+
+private static Dictionary<string, Dictionary<string, decimal>> GetExchangeRates()
+{
+    // Імпортуємо дані з API обмінного курсу
+    var exchangeRatesData = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, decimal>>(
+        WebRequest.GetResponse(new Uri("https://api.exchangeratesapi.io/latest")).Content.ReadAsStringAsync().Result);
+
+    // Повертаємо дані
+    return exchangeRatesData;
+}
+4.Пошук найменшого і найбільшого елементів: Напишіть функцію, яка знаходить найменший і найбільший елементи в заданому масиві та повертає їх.
+public static (int min, int max) FindMinMax(int[] array)
+{
+    int min = array[0];
+    int max = array[0];
+
+    for (int i = 1; i < array.Length; i++)
+    {
+        if (array[i] < min)
+        {
+            min = array[i];
+        }
+
+        if (array[i] > max)
+        {
+            max = array[i];
+        }
+    }
+
+    return (min, max);
+}
+5. Робота з рядками: Створіть функцію, яка приймає рядок і підраховує кількість голосних та приголосних букв у ньому.
+public static (int vowels, int consonants) CountVowelsAndConsonants(string text)
+{
+    int vowels = 0;
+    int consonants = 0;
+
+    for (int i = 0; i < text.Length; i++)
+    {
+        char ch = text[i];
+
+        if (IsVowel(ch))
+        {
+            vowels++;
+        }
+        else if (IsConsonant(ch))
+        {
+            consonants++;
+        }
+    }
+
+    return (vowels, consonants);
+}
+
+private static bool IsVowel(char ch)
+{
+    return (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' ||
+            ch == 'y' || ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U' || ch == 'Y');
+}
+
+private static bool IsConsonant(char ch)
+{
+    return (ch != 'a' && ch != 'e' && ch != 'i' && ch != 'o' && ch != 'u' &&
+            ch != 'y' && ch != 'A' && ch != 'E' && ch != 'I' && ch != 'O' && ch != 'U' && ch != 'Y');
+}
+
+6. Геометричний калькулятор: Створіть програму, яка обчислює площу та об'єм геометричних фігур (наприклад, круга, прямокутника, куба) на основі введених параметрів.
+public class GeometryCalculator
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Виберіть геометричну фігуру:");
+        Console.WriteLine("1. Круг");
+        Console.WriteLine("2. Прямокутник");
+        Console.WriteLine("3. Куб");
+
+        int figureNumber = Convert.ToInt32(Console.ReadLine());
+
+        switch (figureNumber)
+        {
+            case 1:
+                CalculateCircle();
+                break;
+            case 2:
+                CalculateRectangle();
+                break;
+            case 3:
+                CalculateCube();
+                break;
+            default:
+                Console.WriteLine("Неправильний номер фігури");
+                break;
+        }
+    }
+
+    private static void CalculateCircle()
+    {
+        Console.WriteLine("Введіть радіус круга:");
+        float radius = Convert.ToSingle(Console.ReadLine());
+
+        float area = Math.PI * radius * radius;
+        float volume = 0;
+
+        Console.WriteLine("Площа круга: {0}", area);
+        Console.WriteLine("Об'єм круга: {0}", volume);
+    }
+
+    private static void CalculateRectangle()
+    {
+        Console.WriteLine("Введіть ширину прямокутника:");
+        float width = Convert.ToSingle(Console.ReadLine());
+
+        Console.WriteLine("Введіть довжину прямокутника:");
+        float length = Convert.ToSingle(Console.ReadLine());
+
+        float area = width * length;
+        float volume = 0;
+
+        Console.WriteLine("Площа прямокутника: {0}", area);
+        Console.WriteLine("Об'єм прямокутника: {0}", volume);
+    }
+
+    private static void CalculateCube()
+    {
+        Console.WriteLine("Введіть довжину ребра куба:");
+        float sideLength = Convert.ToSingle(Console.ReadLine());
+
+        float area = 6 * sideLength * sideLength;
+        float volume = sideLength * sideLength * sideLength;
+
+        Console.WriteLine("Площа куба: {0}", area);
+        Console.WriteLine("Об'єм куба: {0}", volume);
+    }
+}

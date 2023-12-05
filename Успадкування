@@ -1,21 +1,23 @@
-public class Rectangle : Figure
+1.Фігура:
+public abstract class Animal
 {
-  private double width;
-  private double height;
-
-  public Rectangle(double width, double height)
+  public float Weight
   {
-    this.width = width;
-    this.height = height;
+    get { return weight; }
+    set { weight = value; }
   }
 
-  public override double CalculateArea()
+  public string Color
   {
-    return width * height;
+    get { return color; }
+    set { color = value; }
   }
 
-  public override double CalculatePerimeter()
+  public Animal(string color, float weight)
   {
-    return 2 * (width + height);
+    this.Color = color;
+    this.Weight = weight;
   }
+
+  public abstract string MakeSound();
 }

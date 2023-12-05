@@ -1,0 +1,154 @@
+1. Створіть програму, яка обчислює середнє арифметичне всіх елементів у
+заданому масиві цілих чисел.
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Project_123
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] Numbers = new int[3] { 6, 9, 8 };
+            int sum = 0;
+            for (int i = 0; i < Numbers.Length; i++)
+            {
+                sum += Numbers[i];
+            }
+
+            double average = sum / Numbers.Length;
+
+            Console.WriteLine("Середнє арифметичне: {0}", average);
+
+        }
+    }
+}
+2. Напишіть програму для перевірки, чи є заданий масив паліндромом
+(тобто читається однаково зліва направо і справа наліво).
+using System;
+
+namespace Palindrom
+{
+  public class Program
+  {
+    public static void Main(string[] args)
+    {
+      int[] array = { 1, 2, 2, 1 };
+
+      bool isPalindrome = true;
+      int left = 0;
+      int right = array.Length - 1;
+
+      while (left < right)
+      {
+        if (array[left] != array[right])
+        {
+          isPalindrome = false;
+          break;
+        }
+
+        left++;
+        right--;
+      }
+
+      if (isPalindrome)
+      {
+        Console.WriteLine("Массив є паліндромом");
+      }
+      else
+      {
+        Console.WriteLine("Массив не є паліндромом");
+      }
+    }
+  }
+}
+3. Напишіть програму, яка знаходить і виводить на екран всі парні числа у
+заданому масиві.
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Project_123
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] Numbers = new int[10] { 6, 9, 8, 19, 12, 15, 5, 85, 57, 25 };
+            for (int i = 0; i < Numbers.Length; i++)
+            {
+                if (Numbers[i] % 2 == 0)
+                {
+                    Console.WriteLine(Numbers[i]);
+                }
+            }
+        }
+    }
+}
+4.Розробіть функцію, яка знаходить суму всіх додатних елементів у
+масиві.
+int[] parnicifri = { 8, 20, 126, 665, 33 };
+
+int sum = SumOfPositiveNumbers(parnicifri);
+
+Console.WriteLine(sum);
+
+5.public static int FindSmallestIndex(int[] array, int value)
+{
+  int minIndex = -1;
+  for (int i = 0; i < array.Length; i++)
+  {
+    if (array[i] == value)
+    {
+      if (minIndex == -1 || i < minIndex)
+      {
+        minIndex = i;
+      }
+    }
+  }
+
+  return minIndex;
+}
+ 
+6.Напишіть функцію, яка обчислює добуток всіх від’ємних елементів у
+заданому масиві.
+int[] Dobutok = { 7, 66, 21, 4, 16, 13 };
+
+int product = MultiplyNegativeNumbers(Dobutok);
+
+Console.WriteLine(product); 
+Багатовимірні масиви
+1.Створіть двовимірний масив (матрицю) і знайдіть суму елементів по
+головній діагоналі.
+using System;
+
+namespace DiagonalSum
+{
+  public class Program
+  {
+    public static void Main(string[] args)
+    {
+      int[,] array = new int[6, 6];
+
+      for (int i = 0; i < array.GetLength(0); i++)
+      {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+          array[i, j] = (int)Math.Random();
+        }
+      }
+
+      int sum = array.Where(x => x.Column == x.Row).Sum();
+
+      Console.WriteLine("Сума елементів по головній діагоналі: {0}", sum);
+    }
+  }
+}
+

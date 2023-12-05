@@ -1,0 +1,83 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Security.Policy;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    class Person
+
+    {
+        private string name;
+        private DateTime birthYear;
+
+        public Person()
+        {
+            // Конструктор за замовчуванням
+        }
+
+        public Person(string name, DateTime birthYear)
+        {
+            this.name = name;
+            this.birthYear = birthYear;
+        }
+
+        public string Name
+        {
+            get { return name; }
+        }
+
+        public DateTime BirthYear
+        {
+            get { return birthYear; }
+        }
+
+        public int Age()
+        {
+            return DateTime.Now.Year - birthYear.Year;
+        }
+
+        public void Input()
+        {
+            Console.Write("Введіть ім'я: ");
+            name = Console.ReadLine();
+            Console.Write("Введіть рік народження: ");
+            if (DateTime.TryParse(Console.ReadLine(), out DateTime birthYearInput))
+            {
+                birthYear = birthYearInput;
+            }
+            else
+            {
+                Console.WriteLine("Некоректний формат року народження.");
+            }
+        }
+
+        public void ChangeName(string newName)
+        {
+            name = newName;
+        }
+
+        public override string ToString()
+        {
+            return $"Ім'я: {name}, Рік народження: {birthYear.Year}";
+        }
+
+        public void Output()
+        {
+            Console.WriteLine(ToString());
+        }
+
+        public static bool operator ==(Person person1, Person person2)
+        {
+            return person1.name == person2.name;
+        }
+
+        public static bool operator !=(Person person1, Person person2)
+        {
+            return !(person1 == person2);
+        }
+    }
+}

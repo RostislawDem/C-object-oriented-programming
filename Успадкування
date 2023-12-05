@@ -1,23 +1,51 @@
 1.Фігура:
-public abstract class Animal
+public class Circle : Figure
 {
-  public float Weight
+  private double radius;
+
+  public Circle(double radius)
   {
-    get { return weight; }
-    set { weight = value; }
+    this.radius = radius;
   }
 
-  public string Color
+  public override double CalculateArea()
   {
-    get { return color; }
-    set { color = value; }
+    return Math.PI * radius * radius;
   }
 
-  public Animal(string color, float weight)
+  public override double CalculatePerimeter()
   {
-    this.Color = color;
-    this.Weight = weight;
+    return 2 * Math.PI * radius;
+  }
+}
+
+public class Rectangle : Figure
+{
+  private double width;
+  private double height;
+
+  public Rectangle(double width, double height)
+  {
+    this.width = width;
+    this.height = height;
   }
 
-  public abstract string MakeSound();
+  public override double CalculateArea()
+  {
+    return width * height;
+  }
+
+  public override double CalculatePerimeter()
+  {
+    return 2 * (width + height);
+  }
+}
+static void Main(string[] args)
+{
+  Circle circle = new Circle(5);
+  Rectangle rectangle = new Rectangle(10, 20);
+  Console.WriteLine("Площа кола: {0}", circle.CalculateArea());
+  Console.WriteLine("Периметр кола: {0}", circle.CalculatePerimeter());
+  Console.WriteLine("Площа прямокутника: {0}", rectangle.CalculateArea());
+  Console.WriteLine("Периметр прямокутника: {0}", rectangle.CalculatePerimeter());
 }
